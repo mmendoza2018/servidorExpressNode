@@ -9,9 +9,9 @@ class Server {
 
   constructor() {
 
-    this.port = process.env.PORT;
+    this.port = process.env.PORT || 5000;
     this.app = express();
-    
+
     //rutas string
     this.ejemploPath = "/ejemplo"
     this.usersPath = "/usuarios"
