@@ -1,0 +1,4 @@
+* configurar en script de package.json "start": "node app.js"--> la raiz del servidor
+* intalar dotenv "npm install dotenv" crear el archivo .env PORT=8080  y llamarlo
+* crear el .gitignore node_modules/ --> "ignorar .env"
+* 
