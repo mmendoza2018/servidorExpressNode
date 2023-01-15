@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { dbbConnect } = require("../database/config")
 //const hbs = require('hbs');
 const routerUsuarios = require('../routes/usuarios');
 
@@ -15,6 +16,8 @@ class Server {
     //rutas string
     this.ejemploPath = "/ejemplo"
     this.usersPath = "/usuarios"
+
+    //coneccion DB
     
     //midlewires globales de la APP
     this.midlewires();
@@ -22,6 +25,9 @@ class Server {
     //rutas de la APP
     this.routes();
     
+  }
+  async conexion() {
+    dbbConnect();
   }
 
   midlewires() {
