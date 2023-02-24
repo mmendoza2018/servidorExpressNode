@@ -16,6 +16,8 @@ const {
   validacionEmailUsuarios,
   validacionExiteIdUsuario
 } = require("../helpers/validacionesPersonalizadas.js");
+const { verificaJWT } = require("../middlewares/verificaJWT");
+const { validaRolAdministrador, verificaRolesDados } = require("../middlewares/validarRoles");
 
 // todas estas rutas pertencen a solo un path en espcifico en este caso a usuarios, este arquivo se requiere en el server
 // se pueden hacer peticiones, put, patch, get, post, delete
@@ -57,7 +59,11 @@ validarCampos,
 putUsuarios);
 
 router.get("/", getUsuarios);
+
 router.delete("/:id", 
+verificaJWT,
+verificaRolesDados("ADMIN_ROLE","VENTAS_ROLE"),
+validaRolAdministrador,
 param("id", "el Id no es valido").isMongoId(),
 param("id").custom( validacionExiteIdUsuario ),
 validarCampos,

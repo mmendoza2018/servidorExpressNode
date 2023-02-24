@@ -3,6 +3,7 @@ const cors = require("cors");
 const { dbbConnect } = require("../database/config")
 //const hbs = require('hbs');
 const routerUsuarios = require('../routes/usuarios');
+const routerAuth = require('../routes/auth');
 
 require("dotenv").config();
 
@@ -16,6 +17,7 @@ class Server {
     //rutas string
     this.ejemploPath = "/ejemplo"
     this.usersPath = "/usuarios"
+    this.authPath = "/auth"
 
     //coneccion DB
     
@@ -47,6 +49,7 @@ class Server {
 
     // rutas globales ( dentro de un path hay sub paths)
     this.app.use( this.usersPath, routerUsuarios );
+    this.app.use( this.authPath, routerAuth );
 
   }
 

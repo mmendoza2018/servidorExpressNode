@@ -95,9 +95,11 @@ const deleteUsuarios = async (req = request, res = response) => {
 
   // actualizamos el estado 
   let usuarioUpdate = await Usuario.findByIdAndUpdate( id, { estado : false } )
+  let usuarioVerificado = req.usuario;
 
   res.json({
     usuarioUpdate,
+    usuarioVerificado
   });
 };
 
